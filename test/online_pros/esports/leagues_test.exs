@@ -1,8 +1,8 @@
-defmodule OnlinePros.LeaguesTest do
+defmodule OnlinePros.Esports.LeaguesTest do
   use OnlinePros.DataCase
 
-  alias OnlinePros.League
-  alias OnlinePros.Game
+  alias OnlinePros.Esports.League
+  alias OnlinePros.Esports.Game
   alias OnlinePros.Repo
 
   describe "leagues" do

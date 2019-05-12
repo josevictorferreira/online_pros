@@ -1,0 +1,118 @@
+<section id="torch-toolbar">
+  <div class="torch-container">
+    <%= link "New Player", to: Routes.player_path(@conn, :new) %>
+  </div>
+</section>
+<section id="torch-index-content">
+  <div class="torch-container">
+    <section id="torch-filters">
+      <h3>Find Players</h3>
+      <%= form_tag @conn.request_path, method: :get, id: "torch-filters-form" do %>
+        
+          <div class="field">
+            <label>Name</label>
+            <%= filter_select(:player, :name, @conn.params) %>
+            <%= filter_string_input(:player, :name, @conn.params) %>
+          </div>
+        
+          <div class="field">
+            <label>Image</label>
+            <%= filter_select(:player, :image, @conn.params) %>
+            <%= filter_string_input(:player, :image, @conn.params) %>
+          </div>
+        
+          <div class="field">
+            <label>Nationality</label>
+            <%= filter_select(:player, :nationality, @conn.params) %>
+            <%= filter_string_input(:player, :nationality, @conn.params) %>
+          </div>
+        
+          <div class="field">
+            <label>Platform</label>
+            <%= filter_select(:player, :platform, @conn.params) %>
+            <%= filter_string_input(:player, :platform, @conn.params) %>
+          </div>
+        
+          <div class="field">
+            <label>Position</label>
+            <%= filter_select(:player, :position, @conn.params) %>
+            <%= filter_string_input(:player, :position, @conn.params) %>
+          </div>
+        
+          <div class="field">
+            <label>Stream</label>
+            <%= filter_select(:player, :stream, @conn.params) %>
+            <%= filter_string_input(:player, :stream, @conn.params) %>
+          </div>
+        
+        
+          <div class="field">
+            <label>Is online</label>
+            <%= filter_boolean_input(:player, :is_online, @conn.params) %>
+          </div>
+        
+        
+        
+        <button type="submit" class="torch-button">Search</button>
+        <%= link "Clear Filters", to: Routes.player_path(@conn, :index) %>
+      <% end %>
+
+    </section>
+
+    <section id="torch-table">
+    <%= if length(@players) > 0 do %>
+      <table>
+        <thead>
+          <tr>
+            
+              <th><%= table_link(@conn, "Name", :name) %></th>
+            
+              <th><%= table_link(@conn, "Image", :image) %></th>
+            
+              <th><%= table_link(@conn, "Is online", :is_online) %></th>
+            
+              <th><%= table_link(@conn, "Nationality", :nationality) %></th>
+            
+              <th><%= table_link(@conn, "Platform", :platform) %></th>
+            
+              <th><%= table_link(@conn, "Position", :position) %></th>
+            
+              <th><%= table_link(@conn, "Stream", :stream) %></th>
+            
+            <th><span>Actions</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for player <- @players do %>
+            <tr>
+              
+                <td><%= player.name %></td>
+              
+                <td><%= player.image %></td>
+              
+                <td><%= player.is_online %></td>
+              
+                <td><%= player.nationality %></td>
+              
+                <td><%= player.platform %></td>
+              
+                <td><%= player.position %></td>
+              
+                <td><%= player.stream %></td>
+              
+              <td class="torch-actions">
+                <span><%= link "Show", to: Routes.player_path(@conn, :show, player) %></span>
+                <span><%= link "Edit", to: Routes.player_path(@conn, :edit, player) %></span>
+                <span><%= link "Delete", to: Routes.player_path(@conn, :delete, player), method: :delete, data: [confirm: "Are you sure?"] %></span>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= render Torch.PaginationView, "_pagination.html", assigns %>
+    <% else %>
+      <p class="torch-no-data">No Players match your search.</p>
+    <% end %>
+    </section>
+  </div>
+</section>

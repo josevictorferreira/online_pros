@@ -23,7 +23,10 @@
             </a>
           </div>
           <nav class="torch-nav">
-            <!-- nav links here -->
+            <a href="/admin/games">Games</a>
+            <a href="/admin/leagues">Leagues</a>
+            <a href="/admin/teams">Teams</a>
+            <a href="/admin/players">Players</a>
           </nav>
         </div>
       </section>
@@ -34,4 +37,3 @@
     <script src="<%= Routes.static_path(@conn, "/torch/torch.js") %>"></script>
   </body>
 </html>
-

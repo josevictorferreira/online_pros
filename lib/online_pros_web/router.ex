@@ -13,6 +13,15 @@ defmodule OnlineProsWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/admin", OnlineProsWeb do
+    pipe_through :browser
+
+    resources "/games", GameController
+    resources "/leagues", LeagueController
+    resources "/teams", TeamController
+    resources "/players", PlayerController
+  end
+
   scope "/", OnlineProsWeb do
     pipe_through :browser
 

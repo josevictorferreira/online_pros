@@ -1,10 +1,10 @@
-defmodule OnlinePros.PlayersTest do
+defmodule OnlinePros.Esports.PlayersTest do
   use OnlinePros.DataCase
 
-  alias OnlinePros.Player
-  alias OnlinePros.Team
-  alias OnlinePros.League
-  alias OnlinePros.Game
+  alias OnlinePros.Esports.Player
+  alias OnlinePros.Esports.Team
+  alias OnlinePros.Esports.League
+  alias OnlinePros.Esports.Game
   alias OnlinePros.Repo
 
   describe "players" do
@@ -13,7 +13,7 @@ defmodule OnlinePros.PlayersTest do
     @team %Team{name: "Flamengo", image: "flamengo.jpg", league: @league}
     @valid_attrs %Player{
       name: "brTT",
-      stream_id: "brTT",
+      stream: "brTT",
       image: "brtt.jpg",
       platform: "Cube.TV",
       nationality: "Brazillian",
@@ -22,7 +22,7 @@ defmodule OnlinePros.PlayersTest do
     }
     @valid_attrs_2 %Player{
       name: "brTT",
-      stream_id: "brTT",
+      stream: "brTT",
       image: "brtt.jpg",
       platform: "Cube.TV",
       nationality: "Brazillian",
@@ -31,7 +31,7 @@ defmodule OnlinePros.PlayersTest do
     }
     @invalid_attrs_1 %Player{
       name: nil,
-      stream_id: "brTT",
+      stream: "brTT",
       image: "brtt.jpg",
       platform: "Cube.TV",
       nationality: "Brazillian",
@@ -40,7 +40,7 @@ defmodule OnlinePros.PlayersTest do
     }
     @invalid_attrs_2 %Player{
       name: "brTT",
-      stream_id: nil,
+      stream: nil,
       image: "brtt.jpg",
       platform: "Cube.TV",
       nationality: "Brazillian",
@@ -52,7 +52,7 @@ defmodule OnlinePros.PlayersTest do
   test "With valid data creates and updates a Player" do
     assert {:ok, %Player{} = player} = Repo.insert(@valid_attrs)
     assert player.name == "brTT"
-    assert player.stream_id == "brTT"
+    assert player.stream == "brTT"
     assert player.nationality == "Brazillian"
     assert player.position == "AD Carry"
     assert player.image == "brtt.jpg"

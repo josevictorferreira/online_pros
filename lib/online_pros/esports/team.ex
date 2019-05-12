@@ -1,12 +1,11 @@
-defmodule OnlinePros.Team do
+defmodule OnlinePros.Esports.Team do
   use Ecto.Schema
   import Ecto.Changeset
-  alias OnlinePros.Team
 
   schema "teams" do
     field :image, :string
     field :name, :string
-    belongs_to :league, OnlinePros.League
+    belongs_to :league, OnlinePros.Esports.League
 
     timestamps()
   end

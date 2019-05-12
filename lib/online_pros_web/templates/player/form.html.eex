@@ -1,0 +1,56 @@
+<%= form_for @changeset, @action, [multipart: true, id: "torch-form"], fn f -> %>
+  <fieldset class="torch-panel">
+    <legend>
+      <span>Details</span>
+    </legend>
+    <%= if @changeset.action do %>
+      <p class="torch-form-error">Oops, something went wrong! Please check the errors below.</p>
+    <% end %>
+  
+    <div class="torch-form-group">
+      <%= label f, :name %>
+      <%= text_input f, :name %>
+      <%= error_tag f, :name %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :image %>
+      <%= text_input f, :image %>
+      <%= error_tag f, :image %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :is_online %>
+      <%= checkbox f, :is_online %>
+      <%= error_tag f, :is_online %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :nationality %>
+      <%= text_input f, :nationality %>
+      <%= error_tag f, :nationality %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :platform %>
+      <%= text_input f, :platform %>
+      <%= error_tag f, :platform %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :position %>
+      <%= text_input f, :position %>
+      <%= error_tag f, :position %>
+    </div>
+  
+    <div class="torch-form-group">
+      <%= label f, :stream %>
+      <%= text_input f, :stream %>
+      <%= error_tag f, :stream %>
+    </div>
+  
+    <div class="torch-submit-form">
+      <%= submit "Submit", class: "torch-submit-button" %>
+    </div>
+  </fieldset>
+<% end %>

@@ -12,6 +12,15 @@ config :online_pros,
   twitch_client_id: System.get_env("TWITCH_CLIENT_ID"),
   facebook_access_token: System.get_env("FACEBOOK_ACCESS_TOKEN")
 
+config :online_pros, OnlinePros.Repo,
+  adapter: Ecto.Adaoters.Postgres,
+  username: System.get_env("PGUSER"),
+  password: System.get_env("PGPASSWORD"),
+  database: System.get_env("PGDATABASE"),
+  hostname: System.get_env("PGHOST"),
+  port: System.get_env("PGPORT") |> String.to_integer,
+  pool_size: System.get_env("PGPOOL") |> String.to_integer
+
 # Configures the endpoint
 config :online_pros, OnlineProsWeb.Endpoint,
   url: [host: "localhost"],
@@ -30,7 +39,6 @@ config :phoenix, :json_library, Jason
 config :torch,
   otp_app: :online_pros,
   template_format: "eex" || "slim"
-
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

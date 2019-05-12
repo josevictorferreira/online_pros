@@ -20,9 +20,13 @@ defmodule OnlinePros.MixProject do
   def application do
     [
       mod: {OnlinePros.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: app_list(Mix.env),
     ]
   end
+
+  defp app_list(:dev), do: app_list()
+  defp app_list(_), do: app_list()
+  defp app_list, do: [:logger, :runtime_tools]
 
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
